@@ -25,6 +25,18 @@
 	<update id="update" parameterType="com.ict.db.BVO">
 		update bbs_t set subject=#{subject}, writer=#{writer}, content=#{content}, file_name=#{file_name} where b_idx=#{b_idx}
 	</update>
+	
+	<update id="hitup" parameterType="String">
+		update bbs_t set hit = hit+1 where b_idx = #{b_idx}
+	</update>
+	
+	<select id="clist" parameterType="String" resultType="com.ict.db.CVO">
+		select * from comment_t where b_idx = #{b_idx}
+	</select>
+	
+	<insert id="comm_ins" parameterType="com.ict.db.CVO">
+		insert into comment_t values(comment_t_seq.nextval, null,#{content},null,sysdate,#{b_idx})
+	</insert>
 </mapper>
 
 

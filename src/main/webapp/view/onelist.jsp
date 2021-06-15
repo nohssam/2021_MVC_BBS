@@ -42,6 +42,12 @@
 	.hit {width:15%}
 	.title{background:lightsteelblue}
 	.odd {background:silver}
+	
+	/* 댓글 */
+	.div1{
+		width: 800px;
+		margin: auto;
+	}
 </style>
 <script type="text/javascript">
 	function list_go(f) {
@@ -54,6 +60,14 @@
 	}
 	function delete_go(f) {
 		f.action="${pageContext.request.contextPath}/MyController?cmd=delete";
+		f.submit();
+	}
+	function comm_ins(f) {
+		f.action="${pageContext.request.contextPath}/MyController?cmd=comm_ins";
+		f.submit();
+	}
+	function comm_del(f) {
+		f.action="${pageContext.request.contextPath}/MyController?cmd=comm_del";
 		f.submit();
 	}
 </script>
@@ -106,6 +120,61 @@
 		</table>
 	</form>
 	</div>
+	<br><br>
+	<%-- 댓글 출력 --%>
+	<div class="div1">
+	<hr>
+		<c:if test="${!empty c_list}">
+			<c:forEach var="k" items="${c_list}">
+			<div style="margin: 10px; 0px;">
+				<form method="post">
+					<table>
+						<tbody>
+							<tr>
+								<td><textarea rows="4" cols="70" name="content" readonly>${k.content }</textarea></td>
+								<td><input style="height: 70px;" type="button" value="댓글 삭제" onclick="comm_del(this.form)"> </td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			</c:forEach>				
+		</c:if>
+	</div>
+	<br>
+	<%-- 댓글 입력 --%>
+	<div class="div1">
+		<form method="post">
+			<table>
+				<tbody>
+					<tr>
+						<!-- 댓글 쓴사람과 로그인 아이디가 같으면 삭제,수정 가능하게 만들어야 됨 -->
+						<td><textarea rows="4" cols="70" name="content"></textarea></td>
+						<td><input style="height: 70px;" type="button" value="댓글" onclick="comm_ins(this.form)"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

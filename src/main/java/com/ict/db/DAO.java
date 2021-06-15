@@ -14,7 +14,7 @@ public class DAO {
 	}
 	
 	public static List<BVO> getList(){
-		List<BVO> list=null;
+		List<BVO> list = null;
 		list = getSession().selectList("list");
 		return list;
 	}
@@ -42,6 +42,29 @@ public class DAO {
 	public static int getUpdate(BVO bvo) {
 		int result =0 ;
 		result = getSession().update("update", bvo);
+		ss.commit();
+		return result;
+	}
+	
+	// 조회수 업데이터
+	public static int getHitUp(String b_idx) {
+		int result = 0 ;
+		result = getSession().update("hitup", b_idx);
+		ss.commit();
+		return result;
+	}
+	
+	// 댓글 가져오기 
+	public static List<CVO> getcList(String b_idx){
+		 List<CVO> clist = null;
+		 clist = getSession().selectList("clist", b_idx);
+		 return clist ;
+	}
+	
+	// 댓글 쓰기
+	public static int getComm_Insert(CVO cvo) {
+		int result=0;
+		result = getSession().insert("comm_ins", cvo);
 		ss.commit();
 		return result;
 	}
