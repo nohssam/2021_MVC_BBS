@@ -1,6 +1,8 @@
 package com.ict.db;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -13,9 +15,21 @@ public class DAO {
 		return ss;
 	}
 	
-	public static List<BVO> getList(){
+	public static int getCount() {
+		int result = 0 ;
+		result = getSession().selectOne("count");
+		return result;
+	}
+	
+	public static List<BVO> getList(int begin, int end){
 		List<BVO> list = null;
-		list = getSession().selectList("list");
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
+	
+		
+		list = getSession().selectList("list", map);
 		return list;
 	}
 	
@@ -65,6 +79,14 @@ public class DAO {
 	public static int getComm_Insert(CVO cvo) {
 		int result=0;
 		result = getSession().insert("comm_ins", cvo);
+		ss.commit();
+		return result;
+	}
+	
+	// 댓글삭제
+	public static int getComm_Delete(String c_idx) {
+		int result=0;
+		result = getSession().delete("comm_del",c_idx);
 		ss.commit();
 		return result;
 	}

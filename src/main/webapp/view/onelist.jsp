@@ -133,6 +133,8 @@
 							<tr>
 								<td><textarea rows="4" cols="70" name="content" readonly>${k.content }</textarea></td>
 								<td><input style="height: 70px;" type="button" value="댓글 삭제" onclick="comm_del(this.form)"> </td>
+								<input type="hidden" name="c_idx" value="${k.c_idx }" > <!-- 삭제  -->
+								<input type="hidden" name="b_idx" value="${k.b_idx }" > <!-- 삭제후이동 -->
 							</tr>
 						</tbody>
 					</table>
