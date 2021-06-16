@@ -41,8 +41,10 @@ public class ListCommand implements Command{
 		pvo.setBeginBlock((int)(pvo.getNowPage()-1)/pvo.getPagePerBlock()*pvo.getPagePerBlock()+1);
 		pvo.setEndBlock(pvo.getBeginBlock()+pvo.getPagePerBlock()-1);
 		
-		// 주의사항 ; endBlock이 totalPage보다 클수가 있다.
-		
+		// 주의사항 : endBlock이 totalPage보다 클수가 있다.
+		if(pvo.getEndBlock() > pvo.getTotalPage()) {
+			pvo.setEndBlock(pvo.getTotalPage());
+		}
         request.setAttribute("list", list);
         request.setAttribute("pvo", pvo);
 		return "view/list.jsp";
