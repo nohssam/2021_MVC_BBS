@@ -31,6 +31,10 @@
 		select * from bbs_t where b_idx = #{b_idx}
 	</select>
 	
+	<delete id="c_delete_all" parameterType="String">
+		delete from comment_t where b_idx = #{b_idx}
+	</delete>
+	
 	<delete id="delete" parameterType="com.ict.db.BVO">
 		delete from bbs_t where b_idx = #{b_idx}
 	</delete>

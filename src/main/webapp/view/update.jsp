@@ -47,13 +47,13 @@
 </style>
 <script type="text/javascript">
 	function list_go(f) {
-		f.action="${pageContext.request.contextPath}/MyController?cmd=list";
+		f.action="${pageContext.request.contextPath}/MyController?cmd=list&cPage=${cPage}";
 		f.submit();
 	}
 	function update_ok(f) {
 		if("${bvo.pwd}" == f.pwd.value){
 			alert("수정하기");
-			f.action="${pageContext.request.contextPath}/MyController?cmd=update_ok";
+			f.action="${pageContext.request.contextPath}/MyController?cmd=update_ok&cPage=${cPage}";
 			f.submit();
 		}else{
 			alert("비밀번호틀림");

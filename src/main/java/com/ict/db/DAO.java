@@ -46,6 +46,13 @@ public class DAO {
 		return bvo;
 	}
 	
+	// 원글과 관련되 댓글 모두 삭제 
+	public static int getComm_AllDelete(String b_idx) {
+		int result = 0 ;
+		result = getSession().delete("c_delete_all", b_idx) ;  
+		return result;
+	}
+	// 원글 삭제 
 	public static int getDelete(BVO bvo) {
 		int result=0;
 		result = getSession().delete("delete", bvo);
