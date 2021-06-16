@@ -13,7 +13,9 @@ public class OneListCommand implements Command{
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String b_idx = request.getParameter("b_idx");
-		
+		String cPage = request.getParameter("cPage");
+		System.out.println("cPage-1: " + cPage);
+		request.setAttribute("cPage", cPage);
 		// 조회수 업데이터 
 		int result = DAO.getHitUp(b_idx);
 		

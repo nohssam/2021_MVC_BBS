@@ -81,6 +81,7 @@
 					<td colspan="2" style="text-align: center;">
 						<input type="button" value="삭제" onclick="delete_ok(this.form)">
 						<input type="button" value="목록" onclick="list_go(this.form)"/>
+						<input type="hidden" name="cPage" value="${cPage }">
 					</td>
 				</tr>
 			</tbody>

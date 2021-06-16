@@ -104,7 +104,7 @@ table tfoot ol.paging li a:hover {
 						<c:forEach var="k" items="${list}" varStatus="vs">
 							<tr>
 								<td>${pvo.totalRecord-((pvo.nowPage-1)*pvo.numPerPage+vs.index)}</td>
-								<td><a href="${pageContext.request.contextPath}/MyController?cmd=onelist&b_idx=${k.b_idx}">${k.subject }</a></td>
+								<td><a href="${pageContext.request.contextPath}/MyController?cmd=onelist&b_idx=${k.b_idx}&cPage=${pvo.nowPage}">${k.subject }</a></td>
 								<td>${k.writer }</td>
 								<td>${k.write_date.substring(0,10) }</td>
 								<td>${k.hit }</td>

@@ -51,15 +51,15 @@
 </style>
 <script type="text/javascript">
 	function list_go(f) {
-		f.action="${pageContext.request.contextPath}/MyController?cmd=list";
+		f.action="${pageContext.request.contextPath}/MyController?cmd=list&cPage=${cPage}";
 		f.submit();
 	}
 	function update_go(f) {
-		f.action="${pageContext.request.contextPath}/MyController?cmd=update";
+		f.action="${pageContext.request.contextPath}/MyController?cmd=update&cPage=${cPage}";
 		f.submit();
 	}
 	function delete_go(f) {
-		f.action="${pageContext.request.contextPath}/MyController?cmd=delete";
+		f.action="${pageContext.request.contextPath}/MyController?cmd=delete&cPage=${cPage}";
 		f.submit();
 	}
 	function comm_ins(f) {
