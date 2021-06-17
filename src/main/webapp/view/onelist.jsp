@@ -71,6 +71,7 @@
 		f.submit();
 	}
 </script>
+
 </head>
 <body>
 	<div id="bbs">
